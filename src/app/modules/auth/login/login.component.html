@@ -1,0 +1,20 @@
+<div class="login-container" [ngStyle]="data.STYLE_BACKGROUND">
+    <div class="login-form">
+        <img [src]="data.LOGO" alt="Logo" class="login-form-logo">
+        <div class="login-form-content" app-login-form>
+            <app-login-form></app-login-form>
+        </div>
+        <div class="login-form-footer">
+            <div class="login-form-footer__links">
+                <a href="#">Acerca de</a>
+                <a href="#">Contactenos</a>
+                <a href="#">Blog</a>
+            </div>
+            <div class="login-form-footer__socials">
+                <ng-container *ngFor="let icon of data.ICONS">
+                    <fa-icon [icon]="icon" class="login-form-footer__socials_social"></fa-icon>
+                </ng-container>
+            </div>
+        </div>
+    </div>
+</div>

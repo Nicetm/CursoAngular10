@@ -1,0 +1,13 @@
+@import "./themes/dark-theme";
+@import "./themes/red-theme";
+@import "./themes/blue-dark-theme";
+@import "./themes/yellow-theme.scss";
+@import "./themes/white-theme";
+
+$themes: (
+    'dark': $dark_theme,
+    'red': $red_theme,
+    'blue-dark': $blue_dark_theme,
+    'yellow': $yellow_theme,
+    'white': $white_theme,
+);

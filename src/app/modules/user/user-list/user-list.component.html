@@ -1,0 +1,59 @@
+<div class="container-fluid px-0">
+    <div class="row bg-dark h-100">
+        <div class="col-12 px-0">
+            <app-carousel [items]="carouselData"></app-carousel>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!---------------------------------------------
+        pipes
+    ---------------------------------------------->
+    <div class="col-12">
+        <h1>Pipes</h1>
+        <p>JSON: {{obj | json}}</p>
+        <p>Date: {{dateVar | date}}</p>
+        <p>Date medium: {{dateVar | date:'medium'}}</p>
+        <p>Date full: {{dateVar | date:'full'}}</p>
+        <p>Date shortTime: {{dateVar |date:'shortTime'}}</p>
+        <p>Date fullTime: {{dateVar |date:'fullTime'}}</p>
+        <p>Currency: {{currencyVar | currency}}</p>
+        <p>Currency: {{currencyVar | currency:'CLP'}}</p>
+        <p>Decimal: {{decimalVar | number:'1.2-3'}}</p>
+        <p>Custom Pipe: {{user.name | greeting:user.gender:user.role }}</p>
+    </div>
+    <!---------------------------------------------
+        How to use ngOnChange
+    ---------------------------------------------->
+    <div class="col-12">
+        <app-title-h1 [pricePesos]="pricePesos" [text]="title"></app-title-h1>
+        <button class="btn btn-primary" (click)="addAmount();">Agregar 10 pesos</button>
+    </div>
+    <!---------------------------------------------
+        List users
+    ---------------------------------------------->
+    <ng-container *ngIf="users; else elseUsersLoader;">
+        <app-card-user [data]="user" *ngFor="let user of users;" class="col-12 col-md-6 col-xl-3"></app-card-user>
+    </ng-container>
+    <!---------------------------------------------
+        How to use last and first
+    ---------------------------------------------->
+    <!-- <div class="row">
+        <div class="col-12">
+            <h1>Opciones de dias</h1>
+        </div>
+        <div class="col-12" *ngFor="let dia of dias; first as isFirst; last as isLast;">
+            <h2>{{dia}} {{ isFirst || isLast ? 'día' : 'días' }}</h2>
+        </div>
+    </div> -->
+    <!---------------------------------------------
+        Init loader of card user
+    ---------------------------------------------->
+    <ng-template #elseUsersLoader>
+        <app-card-loader class="col-12 col-md-6 col-xl-3" [bars]="4" [barHeight]="7" *ngFor="let i of [0,1,2,3,4,5,6]"></app-card-loader>
+    </ng-template>
+    <!---------------------------------------------
+        End loader of card user
+    ---------------------------------------------->
+</div>
