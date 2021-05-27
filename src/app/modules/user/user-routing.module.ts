@@ -5,7 +5,6 @@ import { UserDetailComponent } from './user-detail/user-detail.component';
 import { AuthGuard } from '@core/guards/auth.guard';
 import { DefaultUserComponent } from './default-user/default-user.component';
 
-
 const routes: Routes = [
   {
     path: '',

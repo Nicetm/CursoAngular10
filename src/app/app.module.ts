@@ -11,6 +11,7 @@ import { NavigationComponent } from './layout/navigation/navigation.component';
 import { HeaderComponent } from './layout/header/header.component';
 import { LeftNavComponent } from './layout/left-nav/left-nav.component';
 import { LeftNavMenuComponent } from './layout/left-nav/left-nav-menu/left-nav-menu.component';
+import { Page401Component } from './modules/server/page401/page401.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { LeftNavMenuComponent } from './layout/left-nav/left-nav-menu/left-nav-m
     NavigationComponent,
     HeaderComponent,
     LeftNavComponent,
-    LeftNavMenuComponent
+    LeftNavMenuComponent,
+    Page401Component
   ],
   imports: [
     BrowserModule,

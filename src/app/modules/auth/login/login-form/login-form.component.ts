@@ -63,7 +63,7 @@ export class LoginFormComponent implements OnInit{
     }
     //console.log('auth', this.loginForm.value)
     this.authService.login(this.loginForm.value).subscribe((r: IApiError ) => {
-      console.log(r.msg)
+      console.log(r)
     })
   }
 

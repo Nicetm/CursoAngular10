@@ -6,6 +6,9 @@ export const ROUTH_PATH = {
     PANEL: {
         DEFAUL: 'panel',
         USER: 'user'
+    },
+    SERVER: {
+        E_401: '401'
     }
 };
 
@@ -20,6 +23,10 @@ export const INTERNAL_PATH = {
      */
     PANEL_DEFAULT: `${ROUTH_PATH.PANEL.DEFAUL}`,
     PANEL_USER_LIST: `${ROUTH_PATH.PANEL.USER}`,
+    /**
+     * SERVER
+     */
+    SERVER_E_401: `${ROUTH_PATH.SERVER.E_401}`
 };
 
 export const INTERNAL_ROUTES = {
@@ -30,5 +37,9 @@ export const INTERNAL_ROUTES = {
     /**
      * PANEL
      */
-    PANEL_USER_LIST: `/${INTERNAL_PATH.PANEL_DEFAULT}/${INTERNAL_PATH.PANEL_USER_LIST}`
+    PANEL_USER_LIST: `/${INTERNAL_PATH.PANEL_DEFAULT}/${INTERNAL_PATH.PANEL_USER_LIST}`,
+    /**
+     * SERVER
+     */
+    SERVER_E_401: `/${INTERNAL_PATH.SERVER_E_401}`
 }

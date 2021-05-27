@@ -1,6 +1,7 @@
 export interface IApiUserAuthenticated {
-    fullname: string,
-    age: number,
-    token: string,
-    avatar: string
+    fullname: string;
+    age: number;
+    token: string;
+    avatar: string;
+    work?: string;
 }

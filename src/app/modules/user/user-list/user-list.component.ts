@@ -46,7 +46,7 @@ export class UserListComponent implements AfterViewInit, OnInit, OnDestroy, OnCh
   
   ngOnInit() {
     this.getUsers();
-    console.log('User List - onInit')
+    //console.log('User List - onInit')
   }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -54,7 +54,7 @@ export class UserListComponent implements AfterViewInit, OnInit, OnDestroy, OnCh
   }
 
   ngAfterViewInit(): void {
-    console.log('User List - afterViewInit')
+    //console.log('User List - afterViewInit')
   }
 
   addAmount() {
