@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthGuard } from './guards/auth.guard';
 import { ErrorInterceptor } from './interseptors/error.interseptor';
+import { JwtInterseptor } from './interseptors/jwt.interseptor';
 
 @NgModule({
   imports: [
@@ -13,6 +14,11 @@ import { ErrorInterceptor } from './interseptors/error.interseptor';
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtInterseptor,
       multi: true
     }
   ]

@@ -9,26 +9,19 @@ import { AuthService } from '@data/services/api/auth.service';
   styleUrls: ['./login-form.component.scss']
 })
 export class LoginFormComponent implements OnInit{
-  //public data = CONST_LOGIN_PAGE;
   public loginForm;
   public loginSubmitted = false;
   public patternEmail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private authService: AuthService
-    ) {
-    // this.loginForm = this.data.FORM; // Data usada con ngModel
+  public serviceError: boolean;
+  public serviceErrorMsg: string;
+
+  constructor(private formBuilder: FormBuilder,public authService: AuthService) {
+    this.serviceError = false;
+    this.serviceErrorMsg = "";
     this.loginForm = formBuilder.group({
       email: ['', [Validators.required, Validators.pattern(this.patternEmail)]],
       password: ['', [Validators.required, Validators.maxLength(10)]],
-      /*person: this.formBuilder.group({
-        name: ['', Validators.required],
-        lastname: ['', Validators.required]
-      }),
-      interests: this.formBuilder.array([
-        this.formBuilder.control('', Validators.required)
-      ])*/
     });
   }
 
@@ -39,36 +32,18 @@ export class LoginFormComponent implements OnInit{
   get fl() {
     return this.loginForm.controls;
   }
-
-  get fp() {
-    return this.loginForm.controls.person.controls;
-  }
-
-  get interests() {
-    return this.loginForm.get('interests') as FormArray;
-  }
-
-  addInterets() {
-    this.interests.push(this.formBuilder.control('', Validators.required))
-  }
-
-  removeInterest(index: number) {
-    this.interests.removeAt(index);
-  }
-
+  
   authenticate() {
     this.loginSubmitted = true;
     if(!this.loginForm.valid) {
       return;
     }
-    //console.log('auth', this.loginForm.value)
-    this.authService.login(this.loginForm.value).subscribe((r: IApiError ) => {
-      console.log(r)
+    this.authService.login(this.loginForm.value).subscribe((res: IApiError ) => {
+      if (res.error) {
+        this.serviceError = true;
+        this.serviceErrorMsg = res.msg;
+        console.log(this.serviceError, this.serviceErrorMsg)
+      }
     })
   }
-
-  // Validacion con ngModel
-  // get isValidForm() {
-  //   return (this.loginForm.email.isValid() && this.loginForm.password.isValid());
-  // }
 }

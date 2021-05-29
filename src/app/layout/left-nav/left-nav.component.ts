@@ -11,16 +11,21 @@ import { faBars, faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 })
 export class LeftNavComponent implements OnInit {
   
-  @Output() showMenu = new EventEmitter<any>();
-  public faBars = faBars;
-  public name = 'Fernanda Larios';
-  public position = 'Gerente';
-  public avatar = 'assets/images/defaults/avatar.jpg';
-  public logo = 'assets/images/defaults/logo.png';
-  public menus: ILeftNavMenu[] = LEFT_NAV_MENUS;
+  @Output() showMenu: any;
+  public faBars: any;
+  public logo: string;
+  public menus: ILeftNavMenu[];
   public logoutMenu: ILeftNavMenu;
   
   constructor( public authService: AuthService) { 
+
+    this.showMenu = new EventEmitter<any>();
+    this.faBars = faBars;
+    this.logo = "assets/images/defaults/logo.png";
+    this.menus = LEFT_NAV_MENUS;
+  }
+
+  ngOnInit() {
     this.logoutMenu = {
       title: '',
       links: [
@@ -33,9 +38,4 @@ export class LeftNavComponent implements OnInit {
 
     }
   }
-
-  ngOnInit() {
-
-  }
-
 }
